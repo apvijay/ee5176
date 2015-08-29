@@ -1,0 +1,10 @@
+# Site settings
+title: EE5176 Computational Photography
+email: vijay.ap@ee.iitm.ac.in
+description: "Notes for EE5176 Computational Photography"
+baseurl: ""
+url: "http://urapvr.github.io/ee5176"
+
+# Build settings
+markdown: redcarpet
+permalink: pretty
