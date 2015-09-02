@@ -5,20 +5,21 @@ mathjax: true
 ---
 ## Flutter-shutter camera
 
-**Need for deblurring** A brightly-lit scene can be captured by a
-  camera with a low exposure setting. The amount of noise observed is
-  negligible. In a low-lit scene, keeping the exposure low introduces
-  noise in the image. One can increase the aperture to allow for more
-  light at low exposure time, but this may not be possible in all
-  situations such as, where we might like to focus the full scene,
-  thus requiring the aperture to be low. Therefore, increasing the
-  exposure time could be the only option. In that case, there is a
-  problem if the scene contains moving objects. They cause motion blur
-  due to high exposure. Since the scene is not under our control in
-  general, we need to post-process the image to remove motion blur
-  after capturing the image.
+**Need for deblurring** 
+A brightly-lit scene can be captured by a camera with a low exposure
+  setting. The amount of noise observed is negligible. In a low-lit
+  scene, keeping the exposure low introduces noise in the image. One
+  can increase the aperture to allow for more light at low exposure
+  time, but this may not be possible in all situations such as, where
+  we might like to focus the full scene, thus requiring the aperture
+  to be low. Therefore, increasing the exposure time could be the only
+  option. In that case, there is a problem if the scene contains
+  moving objects. They cause motion blur due to high exposure. Since
+  the scene is not under our control in general, we need to
+  post-process the image to remove motion blur after capturing the
+  image.
 
-**An example** Let's take a simple example. In the image, the
+**An example** Let's take a simple example. In the below image, the
   background of the scene is clear and the moving car is blurred. The
   car moves in a linear fashion during exposure. Thus, this is a 1D
   motion blur. We could crop the car and rotate it so that the blur
@@ -26,6 +27,13 @@ mathjax: true
   assume that the velocity of the car and the exposure time is
   known. During the exposure time, shifted versions of the car get
   accumulated in the sensor, and the result is the blurred image.
+
+<div class="fig figcenter fighighlight">
+  <img src="/img/flutter-shutter/blurred.png">
+  <div class="figcaption">
+   <br>
+  </div>
+</div>
 
 **Image formation** In mathematical notation, the blurring operation
 is written as a convolution.  
@@ -72,7 +80,9 @@ Fourier transform as discussed before. Thus, we open and close the
 shutter at random intervals during the exposure time so that the
 filter is not a box, but a coded one. The frequency response of such a
 filter stays put and does not fall to zero at regular
-interavals. Thus, it is better for deconvolution.
+intervals. Thus, it is better for deconvolution.
+
+\\Include DFT of box and coded filters here\\
 
 **Blurring as matrix operation**
 The blurring operation can be viewed as a matrix multiplication
@@ -93,14 +103,13 @@ of \\(X\\) to form the corresponding column in \\(Y\\). Each column of
 \\(A\\) contains the filter \\(h\\) with padded zeros. It is a tall
 and skinny matrix, and thus the system is over-determined.
 
+**Deblurring**
 Let us redefine
 \\(y\\) and \\(x\\) to represent any column of the deblurred and
 blurred images, respectively. Thus, we have
 \\begin{align}
 y = A x
 \end{align}
-
-**Deblurring**
 We solve this equation using least squares method which gives the
 solution,
 \\begin{align}
@@ -138,10 +147,12 @@ codes is \\({}^{50}C_{24} = 1.2 \times 10^{14}\\)!. Our desired code should
 
 It is indeed a challenge to search for the optimal code.
 
+\\Include figures of different codes and DFTs\\
+
 **Effect of blur length** 
 So far, we have assumed that the blur length $k$ is equal to the code
 length $m$. In real scenarios, we do not know the amount of blur that
 will occur. How do we choose the code length? Let us see how
 deblurring fares if $k \neq m$. 
 
-- 
+\\Include deblurring outputs for different ks for m=52\\
