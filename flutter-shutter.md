@@ -77,17 +77,17 @@ interavals. Thus, it is better for deconvolution.
 **Blurring as matrix operation**
 The blurring operation can be viewed as a matrix multiplication
 between the blurring matrix and the image.
-$$
+\\begin{align}
 y = A x
-$$
+\\end{align}
 The image \\(x\\) is stacked as a single column vector, and so is the
 output image \\(y\\). The blurring matrix \\(A\\) has a certain
 structure for convolutional blur. In this discourse, we consider a 1D
 blur, so that the motion applied on each column is independent. The
 matrix formulation in such a case can be written as
-$$
+\\begin{align}
 Y = A X
-$$
+\\end{align}
 where \\(X\\) is the image itself, and \\(A\\) operates on each column
 of \\(X\\) to form the corresponding column in \\(Y\\). Each column of
 \\(A\\) contains the filter \\(h\\) with padded zeros. It is a tall
@@ -96,21 +96,23 @@ and skinny matrix, and thus the system is over-determined.
 Let us redefine
 \\(y\\) and \\(x\\) to represent any column of the deblurred and
 blurred images, respectively. Thus, we have
-$$
+\\begin{align}
 y = A x
-$$
+\end{align}
+
+**Deblurring**
 We solve this equation using least squares method which gives the
 solution,
-$$
-x = A^+x = (A^TA)^{-1}A^Ty
-$$
+\\begin{align}
+x &= A^+x = (A^TA)^{-1}A^Ty
+\\end{align}
 What condition should be imposed on \\(A\\) to get a well-posed
 solution. For that, we consider the presence of noise $n$.
-$$ 
-y = A x + n\\
-A^+ y = A^+Ax = A^+n\\
-A^+ y = x + A^+ n
-$$
+\\begin{align}
+y &= A x + n\\\\
+A^+ y &= A^+Ax = A^+n\\\\
+A^+ y &= x + A^+ n
+\\end{align}
 Thus, the noise gets operated by \\(A^+\\). The covariance of this
 quantity is 
 \\begin{align}
@@ -123,11 +125,12 @@ off-diagonal values. Therefore, singular values of \\(A\\) should not
 be small (How?). Thus, DFT of columns of \\(A\\) should not be zero,
 which was what we discussed during the design of an optimal code.
 
+**Choice of code**
 Let us consider the code length \\(m\\) to be 52. We want the 50% of the
 light to come in during the exposure time, hence \\(1\\)s and \\(0\\)s should
 be equally distributed in the code. The code should additionally have
 $1$s in the first and last bits. Thus, the total number of possible
-codes is \\({}^{50}C_{24} = 1.2 \times 10^14\\)!. Our desired code should
+codes is \\({}^{50}C_{24} = 1.2 \times 10^{14}\\)!. Our desired code should
 
 - maximize the minimum of the DFT 
 
