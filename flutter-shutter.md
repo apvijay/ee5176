@@ -113,23 +113,27 @@ A^+ y = x + A^+ n
 $$
 Thus, the noise gets operated by \\(A^+\\). The covariance of this
 quantity is 
-$$
-cov(A^+n) = E[(A^+n)(A^+n)^T]\\
-= \sigma^2 A^+A^{+T}\\
-= \sigma^2 (A^TA)^{-1}
-$$
+\\begin{align}
+cov(A^+n) &= E[(A^+n)(A^+n)^T]\\\\
+&= \sigma^2 A^+A^{+T}\\\\
+&= \sigma^2 (A^TA)^{-1}
+\\end{align}
 The desired covariance should have small diagonal values and zero
 off-diagonal values. Therefore, singular values of \\(A\\) should not
 be small (How?). Thus, DFT of columns of \\(A\\) should not be zero,
 which was what we discussed during the design of an optimal code.
 
-Let us consider the code length $m$ to be 52. We want the 50\% of the
-light to come in during the exposure time, hence $1$s and $0$s should
+Let us consider the code length \\(m\\) to be 52. We want the 50% of the
+light to come in during the exposure time, hence \\(1\\)s and \\(0\\)s should
 be equally distributed in the code. The code should additionally have
 $1$s in the first and last bits. Thus, the total number of possible
-codes is ${}^{50}C_{24} = 1.2 \times 10^14$!. Our desired code should
-(i) maximize the minimum of the DFT and (ii) minimize the variance of 
-the DFT. It is indeed a challenge to search for the optimal code.
+codes is \\({}^{50}C_{24} = 1.2 \times 10^14\\)!. Our desired code should
+
+- maximize the minimum of the DFT 
+
+- minimize the variance of the DFT. 
+
+It is indeed a challenge to search for the optimal code.
 
 **Effect of blur length** 
 So far, we have assumed that the blur length $k$ is equal to the code
