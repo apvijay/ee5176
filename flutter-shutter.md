@@ -29,7 +29,7 @@ A brightly-lit scene can be captured by a camera with a low exposure
   accumulated in the sensor, and the result is the blurred image.
 
 <div class="fig figcenter fighighlight">
-  <img src="/img/flutter-shutter/blurred.png">
+  <img src="/ee5176/img/flutter-shutter/blurred.png">
   <div class="figcaption">
    <br>
   </div>
@@ -64,7 +64,7 @@ example, one could impose that the image is sparse in wavelet domain,
 which is a property of natural images. Thus, one could solve the
 following optimization problem:
 $$
-min \rho(x) + \|y - h \ast x\|^2
+\min \rho(x) + \\|y - h \ast x\\|^2
 $$
 The first term is the regularizer or prior, and the second term is the
 data term which is based on the image formation model. Some of the
