@@ -156,3 +156,11 @@ will occur. How do we choose the code length? Let us see how
 deblurring fares if $k \neq m$. 
 
 \\Include deblurring outputs for different ks for m=52\\
+
+**Conclusions**
+The advantage of coded exposure lies in low light scenarios where the
+exposure time has to be increased (and if there is a limit in
+increasing the aperture). By coding the exposure, we make the
+deconvolution problem more well-posed. The zero points in the
+frequency domain of the kernel are removed, thereby, preserving the
+signal frequencies leading to a more desired deblurred image.
