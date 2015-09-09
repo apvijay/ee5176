@@ -28,12 +28,14 @@ A brightly-lit scene can be captured by a camera with a low exposure
   known. During the exposure time, shifted versions of the car get
   accumulated in the sensor, and the result is the blurred image.
 
+<!--
 <div class="fig figcenter fighighlight">
   <img src="/ee5176/img/flutter-shutter/blurred.png">
   <div class="figcaption">
    <br>
   </div>
 </div>
+-->
 
 **Image formation** In mathematical notation, the blurring operation
 is written as a convolution.  
@@ -82,7 +84,12 @@ filter is not a box, but a coded one. The frequency response of such a
 filter stays put and does not fall to zero at regular
 intervals. Thus, it is better for deconvolution.
 
-\\Include DFT of box and coded filters here\\
+<div class="fig figcenter fighighlight">
+  <img src="/ee5176/img/flutter-shutter/dft.png">
+  <div class="figcaption">
+   <br>
+  </div>
+</div>
 
 **Blurring as matrix operation**
 The blurring operation can be viewed as a matrix multiplication
@@ -116,7 +123,7 @@ solution,
 x &= A^+x = (A^TA)^{-1}A^Ty
 \\end{align}
 What condition should be imposed on \\(A\\) to get a well-posed
-solution. For that, we consider the presence of noise $n$.
+solution. For that, we consider the presence of noise \\(n\\).
 \\begin{align}
 y &= A x + n\\\\
 A^+ y &= A^+Ax = A^+n\\\\
@@ -135,7 +142,7 @@ be small (How?). Thus, DFT of columns of \\(A\\) should not be zero,
 which was what we discussed during the design of an optimal code.
 
 **Choice of code**
-Let us consider the code length \\(m\\) to be 52. We want the 50% of the
+Let us consider the code length \\(m\\) to be 52. We want 50% of the
 light to come in during the exposure time, hence \\(1\\)s and \\(0\\)s should
 be equally distributed in the code. The code should additionally have
 $1$s in the first and last bits. Thus, the total number of possible
@@ -147,13 +154,11 @@ codes is \\({}^{50}C_{24} = 1.2 \times 10^{14}\\)!. Our desired code should
 
 It is indeed a challenge to search for the optimal code.
 
-\\Include figures of different codes and DFTs\\
-
 **Effect of blur length** 
-So far, we have assumed that the blur length $k$ is equal to the code
-length $m$. In real scenarios, we do not know the amount of blur that
+So far, we have assumed that the blur length \\(k\\) is equal to the code
+length \\(m\\). In real scenarios, we do not know the amount of blur that
 will occur. How do we choose the code length? Let us see how
-deblurring fares if $k \neq m$. 
+deblurring fares if \\(k \neq m\\). 
 
 \\Include deblurring outputs for different ks for m=52\\
 
