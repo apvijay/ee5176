@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /flutter-shutter/
+permalink: /flexible-edof/
 mathjax: true
 ---
 ## Extended Depth of Field photography
@@ -9,10 +9,13 @@ Lens law in optics says that for a lens of a fixed focal length
 \\(f\\) and the sensor plane at a distance \\(v\\) from the lens, only
 a particular plane (parallel to the sensor plane) can be focused. The
 distance of this plane \\(u\\) from the lens is given by
-\\begin{align} \\frac{1}{f} = \\frac{1}{u} + \\frac{1}{v}.
-\\end{align} Hence, in this case, the depth of field is a
-infinitesimal volume, that is a plane at a particular disance from the
-lens.
+
+\\begin{align} 
+  \\frac{1}{f} = \\frac{1}{u} + \\frac{1}{v}.
+\\end{align} 
+
+Hence, in this case, the depth of field is a infinitesimal volume,
+that is a plane at a particular disance from the lens.
 
 In a practical camera, the depth of field is determined by the pixel
 size. Any object not at \\(v\\) will be blurred at the sensor defined
