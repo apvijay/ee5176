@@ -11,6 +11,7 @@ information is captured as blur, and thus blur acts as a cue to infer
 depth. The depths away from the focal plane are "more blurred" and the
 depths closer to the focal plane are "less blurred." 
 
+**Need for image prior **
 To infer the depth of an image, one could extract a patch around every
 pixel, and based on the blur information present in that patch, its
 depth can be estimated. The obvious issue here is how to tell what
@@ -21,6 +22,7 @@ blurred due to defocus. In practical scenarios, we consider that the
 edges of the objects are sharp, and it follows a natural image
 statistic (for example, sharp and sparse gradients). 
 
+**PSF scaling**
 The amount of blur at a pixel is related to the amount of defcous,
 that is how much the light spreads due to blurring. This is given by
 the scale of the PSF at that pixel. The shape of the PSF is directly
@@ -56,3 +58,19 @@ $$
 
 This optimization problem can be solved using iterative reweighted
 least squares.
+
+**Discrimination between scaled PSFs**
+To be able to infer depth, we need to tell clearly the scale of the
+PSF that affects a particular patch. As we saw earlier, scales closer
+to the correct scale might also result in a good deconvolution leading
+to an ambiguity. Thus, the scales of the PSFs should be able to better
+discriminate against each other for better depth
+estimation. Conventional aperture (i.e.\ round or polygonal) scores
+poorly in this case. Intituitively, this is because scaled versions of
+these shapes are the same shapes themselves. One good property is that
+the aperture should change its shape at different scales. A fully-open
+aperture of any shape will not satisfy this property. Hence, we go for
+partially opened apertures, especially apertures having a number of
+smaller apertures inside them, so that scaling leads to joining of
+these smaller apertures leading to a different pattern. These are
+called __coded__ apertures.
