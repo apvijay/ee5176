@@ -11,7 +11,7 @@ information is captured as blur, and thus blur acts as a cue to infer
 depth. The depths away from the focal plane are "more blurred" and the
 depths closer to the focal plane are "less blurred." 
 
-**Need for image prior **
+**Need for image prior**
 To infer the depth of an image, one could extract a patch around every
 pixel, and based on the blur information present in that patch, its
 depth can be estimated. The obvious issue here is how to tell what
@@ -33,9 +33,9 @@ given by the aperture, and find out which scale deblurs the patch
 around that pixel "best". The depth corresponding to this scale is
 then the depth of that pixel.
 
-$$
+\\begin{align}
 \text{Deconvolution: } \hat{x} = \arg \min_x \|y - x \ast h\|_2^2 
-$$
+\\end{align}
 
 The catch here is obviously how to tell which scale produces the best
 deblurred image. One, the non-blind deconvolution operation might produce
@@ -51,10 +51,10 @@ the image. That is, we need to tell the optimizer that the image we
 are seeking will follow certail properties. One of the commonly used
 image prior is the sparsity on the gradients. 
 
-$$
+\\begin{align}
 \text{Deconvolution: } \hat{x} = \arg \min_x \|y - x \ast h \|_2^2 +
 \| \nabla \|_{0.8}
-$$
+\\end{align}
 
 This optimization problem can be solved using iterative reweighted
 least squares.
@@ -73,4 +73,4 @@ aperture of any shape will not satisfy this property. Hence, we go for
 partially opened apertures, especially apertures having a number of
 smaller apertures inside them, so that scaling leads to joining of
 these smaller apertures leading to a different pattern. These are
-called __coded__ apertures.
+called *coded* apertures.
