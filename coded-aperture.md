@@ -34,7 +34,7 @@ around that pixel "best". The depth corresponding to this scale is
 then the depth of that pixel.
 
 \\begin{align}
-\\text{Deconvolution: } \\hat{x} = \\arg \\min_x \\|y - x \\ast h\\|_2^2 
+Deconvolution:  \hat{x} = \arg \min\_x \\|y - x \ast h\\|\_2^2 
 \\end{align}
 
 The catch here is obviously how to tell which scale produces the best
