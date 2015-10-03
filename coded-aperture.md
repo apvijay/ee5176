@@ -53,7 +53,7 @@ image prior is the sparsity on the gradients.
 
 \\begin{align}
 Deconvolution:  \hat{x} = \arg \min\_x \\|y - x \ast h \\|\_2^2 +
-\\| \nabla \\|\_{0.8}
+\\| \nabla x \\|\_{0.8}
 \\end{align}
 
 This optimization problem can be solved using iterative reweighted
@@ -74,3 +74,23 @@ partially opened apertures, especially apertures having a number of
 smaller apertures inside them, so that scaling leads to joining of
 these smaller apertures leading to a different pattern. These are
 called *coded* apertures.
+
+The two desired properties of the aperture are 
+1. it is possible to reliably discriminate between the blurs that
+result from different scalings of the filter, and 
+2. the aperture filter can be easily inverted so that the sharp image 
+may be recovered.
+
+One way to design is to look at the frequency domain information of
+the aperture filter. Two scaled versions should not go to zero at the
+same frequency. A zero at a particular frequency is equivalently a
+linear constraint in the spatial domain. Hence, the image is
+restricted to a subspace. Thus, making the scaled PSFs to go to zero
+at different frequencies will make different pockets of subspaces in
+the spatial domain, leading to an easy discrimination.
+
+Levin et al. derived a condition based on KL-distance to differentiate
+between the filters based on the blurred images. They consider an
+image statistic prior based on which a relation between the
+distribution of the blurred image and the coded filter is obtained.
+
