@@ -76,6 +76,7 @@ these smaller apertures leading to a different pattern. These are
 called *coded* apertures.
 
 The two desired properties of the aperture are 
+
 1. it is possible to reliably discriminate between the blurs that
 result from different scalings of the filter, and 
 2. the aperture filter can be easily inverted so that the sharp image 
