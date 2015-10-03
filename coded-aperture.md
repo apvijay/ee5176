@@ -34,7 +34,7 @@ around that pixel "best". The depth corresponding to this scale is
 then the depth of that pixel.
 
 \\begin{align}
-\text{Deconvolution: } \hat{x} = \arg \min_x \|y - x \ast h\|_2^2 
+\\text{Deconvolution: } \\hat{x} = \\arg \\min_x \\|y - x \\ast h\\|_2^2 
 \\end{align}
 
 The catch here is obviously how to tell which scale produces the best
@@ -52,8 +52,8 @@ are seeking will follow certail properties. One of the commonly used
 image prior is the sparsity on the gradients. 
 
 \\begin{align}
-\text{Deconvolution: } \hat{x} = \arg \min_x \|y - x \ast h \|_2^2 +
-\| \nabla \|_{0.8}
+\\text{Deconvolution: } \\hat{x} = \\arg \\min_x \\|y - x \\ast h \\|_2^2 +
+\\| \nabla \\|_{0.8}
 \\end{align}
 
 This optimization problem can be solved using iterative reweighted
